@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mon Portfolio — Développeur Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>Alex<span class="logo-dot">.</span>dev<span class="logo-bracket">/&gt;</span>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil"   class="nav-link active" data-section="accueil">Accueil</a></li>
+      <li><a href="#apropos"   class="nav-link"        data-section="apropos">À Propos</a></li>
+      <li><a href="#competences" class="nav-link"      data-section="competences">Compétences</a></li>
+      <li><a href="#localisation" class="nav-link"     data-section="localisation">Localisation</a></li>
+      <li><a href="#contact"   class="nav-link"        data-section="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ========== ACCUEIL ========== -->
+  <section id="accueil" class="section hero-section">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <!-- Photo de profil centrée -->
+      <div class="profile-wrapper" data-aos="fade-down">
+        <div class="profile-ring"></div>
+        <div class="profile-img-container">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=0a0e1a" 
+               alt="Photo de profil" 
+               class="profile-img"/>
+        </div>
+        <div class="profile-status">
+          <span class="status-dot"></span>
+          Disponible
+        </div>
+      </div>
+
+      <!-- Nom sous la photo -->
+      <h1 class="hero-name" data-aos="fade-up" data-aos-delay="100">
+        Alex <span class="name-highlight">Martin</span>
+      </h1>
+      <p class="hero-title" data-aos="fade-up" data-aos-delay="200">
+        Développeur Full-Stack &amp; Architecte Web
+      </p>
+
+      <!-- Petite présentation -->
+      <div class="hero-intro" data-aos="fade-up" data-aos-delay="300">
+        <p>
+          Passionné par le code depuis plus de 5 ans, je crée des expériences numériques 
+          <strong>performantes</strong>, <strong>élégantes</strong> et <strong>orientées utilisateur</strong>. 
+          De l'idée au déploiement, je transforme vos projets en réalité.
+        </p>
+      </div>
+
+      <div class="hero-badges" data-aos="fade-up" data-aos-delay="400">
+        <span class="badge">⚡ React / Next.js</span>
+        <span class="badge">🔧 Node.js</span>
+        <span class="badge">🐍 Python</span>
+        <span class="badge">☁️ Cloud & DevOps</span>
+      </div>
+
+      <div class="hero-cta" data-aos="fade-up" data-aos-delay="500">
+        <a href="#competences" class="btn-primary">Voir mes compétences</a>
+        <a href="#contact" class="btn-secondary">Me contacter</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== À PROPOS ========== -->
+  <section id="apropos" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-number">01</span>
+        <h2 class="section-title">À Propos</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+          <p class="about-lead">
+            Bonjour ! Je suis Alex Martin, développeur Full-Stack basé à Paris, 
+            spécialisé dans la création d'applications web modernes et évolutives.
+          </p>
+          <p>
+            Diplômé en informatique, j'ai eu l'opportunité de travailler sur des projets 
+            variés allant des startups aux grandes entreprises. Mon approche combine 
+            rigueur technique et sensibilité design pour livrer des produits de qualité.
+          </p>
+          <p>
+            En dehors du code, je contribue à des projets open-source, je rédige des 
+            articles tech et je participe à des hackathons. J'apprends constamment 
+            pour rester au sommet des nouvelles technologies.
+          </p>
+          <div class="about-infos">
+            <div class="info-item">
+              <span class="info-label">📍 Localisation</span>
+              <span class="info-value">Paris, France</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🎓 Formation</span>
+              <span class="info-value">Master Informatique</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">💼 Statut</span>
+              <span class="info-value">Freelance & CDI</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🌍 Langues</span>
+              <span class="info-value">Français, Anglais</span>
+            </div>
+          </div>
+          <a href="#" class="btn-primary" download>Télécharger mon CV</a>
+        </div>
+
+        <div class="about-stats" data-aos="fade-left">
+          <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Années d'expérience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="30">0</div>
+            <div class="stat-label">Projets réalisés</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="12">0</div>
+            <div class="stat-label">Clients satisfaits</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="98">0</div>
+            <div class="stat-label">% de satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPÉTENCES ========== -->
+  <section id="competences" class="section section-dark">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Compétences</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-wrapper">
+        <!-- Frontend -->
+        <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="skills-cat-title"><span>🖥️</span> Frontend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">React / Next.js</span>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">TypeScript</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">HTML / CSS / JS</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="skills-cat-title"><span>⚙️</span> Backend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Node.js / Express</span>
+                <span class="skill-pct">87%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="87"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python / Django</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">PostgreSQL / MongoDB</span>
+                <span class="skill-pct">84%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="84"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DevOps -->
+        <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="skills-cat-title"><span>☁️</span> DevOps & Cloud</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Docker / Kubernetes</span>
+                <span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">AWS / GCP</span>
+                <span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">CI/CD / Git</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outils -->
+      <div class="tools-section" data-aos="fade-up">
+        <h3 class="tools-title">Outils & Technologies</h3>
+        <div class="tools-grid" id="toolsGrid">
+          <div class="tool-chip">VS Code</div>
+          <div class="tool-chip">Figma</div>
+          <div class="tool-chip">GitHub</div>
+          <div class="tool-chip">Postman</div>
+          <div class="tool-chip">Jira</div>
+          <div class="tool-chip">Vercel</div>
+          <div class="tool-chip">Nginx</div>
+          <div class="tool-chip">Redis</div>
+          <div class="tool-chip">GraphQL</div>
+          <div class="tool-chip">Tailwind</div>
+          <div class="tool-chip">Jest</div>
+          <div class="tool-chip">Linux</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOCALISATION ========== -->
+  <section id="localisation" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Localisation</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-info" data-aos="fade-right">
+          <div class="location-card">
+            <div class="location-icon">📍</div>
+            <h3>Basé à Paris, France</h3>
+            <p>Disponible pour des missions en présentiel sur Paris et Île-de-France, ou en remote partout dans le monde.</p>
+          </div>
+          <div class="location-details">
+            <div class="location-detail-item">
+              <span class="ld-icon">🏙️</span>
+              <div>
+                <strong>Ville</strong>
+                <span>Paris, 75000</span>
+              </div>
+            </div>
+            <div class="location-detail-item">
+              <span class="ld-icon">🌍</span>
+              <div>
+                <strong>Remote</strong>
+                <span>Disponible worldwide</span>
+              </div>
+            </div>
+            <div class="location-detail-item">
+              <span class="ld-icon">✈️</span>
+              <div>
+                <strong>Déplacements</strong>
+                <span>Europe & International</span>
+              </div>
+            </div>
+            <div class="location-detail-item">
+              <span class="ld-icon">🕐</span>
+              <div>
+                <strong>Fuseau horaire</strong>
+                <span>CET (UTC+1)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-map" data-aos="fade-left">
+          <div class="map-container" id="mapContainer">
+            <div class="map-placeholder">
+              <div class="map-pin-pulse">
+                <div class="map-pin">📍</div>
+                <div class="pin-pulse"></div>
+              </div>
+              <p class="map-city">Paris, France</p>
+              <div class="map-grid-lines"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section section-dark">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Contact</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <p class="contact-lead">
+            Un projet en tête ? Une question ? N'hésitez pas à me contacter, 
+            je répondrai dans les 24 heures.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:alex@exemple.com" class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <span class="ci-label">Email</span>
+                <span class="ci-value">alex@exemple.com</span>
+              </div>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="contact-item">
+              <div class="contact-icon">💼</div>
+              <div>
+                <span class="ci-label">LinkedIn</span>
+                <span class="ci-value">linkedin.com/in/alex-martin</span>
+              </div>
+            </a>
+            <a href="https://github.com" target="_blank" class="contact-item">
+              <div class="contact-icon">🐙</div>
+              <div>
+                <span class="ci-label">GitHub</span>
+                <span class="ci-value">github.com/alex-martin</span>
+              </div>
+            </a>
+            <a href="tel:+33600000000" class="contact-item">
+              <div class="contact-icon">📱</div>
+              <div>
+                <span class="ci-label">Téléphone</span>
+                <span class="ci-value">+33 6 00 00 00 00</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" data-aos="fade-left">
+          <div class="form-group">
+            <label for="name">Votre nom</label>
+            <input type="text" id="name" name="name" placeholder="Jean Dupont" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Votre email</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <input type="text" id="subject" name="subject" placeholder="Projet web, mission freelance..."/>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="submitBtn">
+            <span id="btnText">Envoyer le message</span>
+            <span id="btnLoader" class="btn-loader hidden">⏳ Envoi...</span>
+          </button>
+          <div id="formSuccess" class="form-success hidden">
+            ✅ Message envoyé avec succès ! Je vous réponds bientôt.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>Alex<span class="logo-dot">.</span>dev<span class="logo-bracket">/&gt;</span>
+      </div>
+      <p class="footer-text">© 2026 Alex Martin — Tous droits réservés</p>
+      <p class="footer-made">Fait avec ❤️ et beaucoup de ☕</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
