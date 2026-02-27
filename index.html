@@ -3,506 +3,67 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio — Développeur Tech</title>
+  <meta name="description" content="Portfolio de ELISOA ANTSAMPIFALIANA Lucie — Étudiante L1 Informatique, EMIT Fianarantsoa"/>
+  <title>ELISOA Lucie — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     CUSTOM CURSOR
-     ═══════════════════════════════════════ -->
+<!-- CURSEUR -->
 <div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
 
-<!-- ═══════════════════════════════════════
-     LOADER
-     ═══════════════════════════════════════ -->
-<div class="page-loader" id="pageLoader">
-  <div class="loader-inner">
-    <div class="loader-logo"><span class="lb">[</span>Dev<span class="ld">.</span><span class="lb">]</span></div>
-    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-    <div class="loader-pct" id="loaderPct">0%</div>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-box">
+    <div class="loader-initials">EL</div>
+    <div class="loader-name">ELISOA Lucie</div>
+    <div class="loader-track"><div class="loader-progress" id="loaderProgress"></div></div>
+    <div class="loader-status" id="loaderStatus">Initialisation…</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     PARTICLES CANVAS
-     ═══════════════════════════════════════ -->
-<canvas id="particleCanvas"></canvas>
+<!-- CANVAS PARTICULES -->
+<canvas id="bgCanvas"></canvas>
 
-<!-- ═══════════════════════════════════════
-     NAVIGATION
-     ═══════════════════════════════════════ -->
+<!-- NAVIGATION -->
 <nav class="navbar" id="navbar">
-  <a href="#hero" class="nav-logo">
-    <span class="lb">[</span>Dev<span class="ld">.</span>Portfolio<span class="lb">]</span>
+  <a href="#accueil" class="logo">
+    <span class="logo-el">EL</span>
+    <span class="logo-name">Lucie</span>
   </a>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about"    class="nav-link" data-section="about">À propos</a></li>
-    <li><a href="#skills"   class="nav-link" data-section="skills">Compétences</a></li>
-    <li><a href="#projects" class="nav-link" data-section="projects">Projets</a></li>
-    <li><a href="#location" class="nav-link" data-section="location">Localisation</a></li>
-    <li><a href="#contact"  class="nav-link" data-section="contact">Contact</a></li>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#accueil"     class="nav-item" data-s="accueil">Accueil</a></li>
+    <li><a href="#apropos"     class="nav-item" data-s="apropos">À propos</a></li>
+    <li><a href="#competences" class="nav-item" data-s="competences">Compétences</a></li>
+    <li><a href="#projets"     class="nav-item" data-s="projets">Projets</a></li>
+    <li><a href="#contact"     class="nav-item" data-s="contact">Contact</a></li>
   </ul>
-
-  <div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <span class="theme-icon">🌙</span>
-    </button>
-    <button class="burger" id="burger" aria-label="Menu">
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" title="Thème">🌙</button>
+    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════ -->
-<section class="hero-section" id="hero">
-  <div class="hero-bg">
-    <div class="hero-orb orb1"></div>
-    <div class="hero-orb orb2"></div>
-    <div class="hero-orb orb3"></div>
-    <div class="grid-overlay"></div>
-  </div>
+<!-- ═══ HERO ═══ -->
+<section id="accueil" class="hero">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+  <div class="hero-grid"></div>
 
-  <div class="hero-content">
-    <!-- Profile Photo -->
-    <div class="profile-wrapper" data-tilt>
-      <div class="profile-ring"></div>
-      <div class="profile-img-container">
-        <!-- REMPLACEZ src PAR VOTRE PHOTO EN BASE64 -->
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9IiMxNDFiMmQiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSI4MCIgcj0iMzUiIGZpbGw9IiM0ZjllZmYiIG9wYWNpdHk9IjAuNiIvPjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNzAiIHJ4PSI2MCIgcnk9IjQwIiBmaWxsPSIjNGY5ZWZmIiBvcGFjaXR5PSIwLjQiLz48L3N2Zz4="
-          alt="Photo de profil"
-          class="profile-img"
-          id="profileImg"
-        />
-      </div>
-      <div class="profile-status">
-        <span class="status-dot"></span> Disponible
-      </div>
-      <div class="profile-badge">
-        <span>💻</span> Dev Full-Stack
-      </div>
-    </div>
-
-    <!-- Text Content -->
-    <div class="hero-text">
-      <div class="hero-greeting">Bonjour, je suis</div>
-      <h1 class="hero-name">
-        <span class="glitch" data-text="Votre Nom">Votre Nom</span>
-      </h1>
-      <div class="hero-title">
-        <span class="typing-text" id="typingText"></span>
-        <span class="typing-cursor">|</span>
-      </div>
-
-      <div class="hero-intro">
-        Passionné par la construction de solutions <strong>robustes et élégantes</strong>,
-        je combine expertise technique et vision produit pour créer des applications
-        qui ont un réel <strong>impact</strong>.
-      </div>
-
-      <div class="hero-badges">
-        <span class="badge">⚡ Full-Stack</span>
-        <span class="badge">🏗️ Architecture</span>
-        <span class="badge">☁️ Cloud / DevOps</span>
-        <span class="badge">🤖 IA / ML</span>
-        <span class="badge">🔐 Sécurité</span>
-      </div>
-
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">
-          <span class="btn-text">Me contacter</span>
-          <span class="btn-icon">✉️</span>
-        </a>
-        <a href="#projects" class="btn-secondary">
-          <span class="btn-text">Voir mes projets</span>
-          <span class="btn-icon">→</span>
-        </a>
-        <a href="#" class="btn-outline" download>
-          <span class="btn-text">CV</span>
-          <span class="btn-icon">📄</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quick Stats Bar -->
-  <div class="hero-stats-bar">
-    <div class="hs-item"><span class="hs-num" data-count="5">0</span><span class="hs-label">Ans d'exp.</span></div>
-    <div class="hs-divider"></div>
-    <div class="hs-item"><span class="hs-num" data-count="40">0</span><span class="hs-label">Projets</span></div>
-    <div class="hs-divider"></div>
-    <div class="hs-item"><span class="hs-num" data-count="25">0</span><span class="hs-label">Clients</span></div>
-    <div class="hs-divider"></div>
-    <div class="hs-item"><span class="hs-num" data-count="3">0</span><span class="hs-label">Certifs</span></div>
-  </div>
-
-  <div class="scroll-indicator">
-    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-    <span>Défiler</span>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     À PROPOS
-     ═══════════════════════════════════════ -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-number">01</span>
-      <h2 class="section-title">À propos</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p class="about-lead">
-          Développeur passionné, spécialisé dans la conception d'architectures
-          scalables et le développement d'applications modernes.
-        </p>
-        <p>
-          Mon approche combine rigueur technique et sens du produit. J'aime résoudre
-          des problèmes complexes avec des solutions simples et maintenables, en gardant
-          toujours l'expérience utilisateur au cœur de mes décisions.
-        </p>
-        <p>
-          En veille technologique permanente, je m'intéresse particulièrement aux
-          nouvelles architectures, à l'IA appliquée et aux pratiques DevOps modernes.
-        </p>
-
-        <div class="about-infos">
-          <div class="info-item">
-            <span class="info-icon">📍</span>
-            <div>
-              <span class="info-label">Localisation</span>
-              <span class="info-value">Votre Ville, France</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">🎓</span>
-            <div>
-              <span class="info-label">Formation</span>
-              <span class="info-value">Master Informatique</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">💼</span>
-            <div>
-              <span class="info-label">Expérience</span>
-              <span class="info-value">5 ans</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <span class="info-icon">✅</span>
-            <div>
-              <span class="info-label">Disponibilité</span>
-              <span class="info-value success-text">Immédiate</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-actions">
-          <a href="#" class="btn-primary" download>📄 Télécharger le CV</a>
-        </div>
-      </div>
-
-      <div class="about-visual reveal">
-        <!-- Timeline -->
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-year">2024 — présent</span>
-              <h4>Lead Developer</h4>
-              <p>Startup Tech · Architecture microservices, IA intégrée</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-year">2022 — 2024</span>
-              <h4>Full-Stack Developer</h4>
-              <p>Agence Numérique · 15 projets livrés</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-year">2020 — 2022</span>
-              <h4>Développeur Junior</h4>
-              <p>ESN · Formation intensive, stack React/Node</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-year">2019 — 2020</span>
-              <h4>Master Informatique</h4>
-              <p>Université · Spécialisation Génie Logiciel</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     COMPÉTENCES
-     ═══════════════════════════════════════ -->
-<section class="section section-dark" id="skills">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-number">02</span>
-      <h2 class="section-title">Compétences</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <!-- Skill Categories -->
-    <div class="skills-tabs reveal">
-      <button class="stab active" data-tab="frontend">🎨 Frontend</button>
-      <button class="stab" data-tab="backend">⚙️ Backend</button>
-      <button class="stab" data-tab="devops">☁️ DevOps</button>
-    </div>
-
-    <div class="skills-panels">
-      <!-- Frontend -->
-      <div class="skills-panel active" data-panel="frontend">
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">⚛️</span>
-              <span class="sc-name">React / Next.js</span>
-              <span class="sc-pct">90%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-            <p class="sc-desc">Hooks avancés, SSR/SSG, App Router, Zustand</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🔷</span>
-              <span class="sc-name">TypeScript</span>
-              <span class="sc-pct">85%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-            <p class="sc-desc">Generics, decorators, strict mode, DI patterns</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🎨</span>
-              <span class="sc-name">CSS / Tailwind</span>
-              <span class="sc-pct">88%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
-            <p class="sc-desc">Animations, Grid/Flexbox, design systems</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🟡</span>
-              <span class="sc-name">Vue.js / Nuxt</span>
-              <span class="sc-pct">75%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-            <p class="sc-desc">Composition API, Pinia, Nuxt 3</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Backend -->
-      <div class="skills-panel" data-panel="backend">
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🟢</span>
-              <span class="sc-name">Node.js / Express</span>
-              <span class="sc-pct">92%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
-            <p class="sc-desc">REST API, WebSockets, microservices, JWT auth</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🐍</span>
-              <span class="sc-name">Python / FastAPI</span>
-              <span class="sc-pct">80%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-            <p class="sc-desc">ML pipelines, async API, Pydantic, SQLAlchemy</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🗄️</span>
-              <span class="sc-name">SQL / NoSQL</span>
-              <span class="sc-pct">85%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-            <p class="sc-desc">PostgreSQL, MongoDB, Redis, Prisma ORM</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🔮</span>
-              <span class="sc-name">GraphQL</span>
-              <span class="sc-pct">72%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
-            <p class="sc-desc">Apollo Server/Client, subscriptions, federation</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- DevOps -->
-      <div class="skills-panel" data-panel="devops">
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🐳</span>
-              <span class="sc-name">Docker / Kubernetes</span>
-              <span class="sc-pct">78%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
-            <p class="sc-desc">Compose, Helm charts, K8s deployments</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">☁️</span>
-              <span class="sc-name">AWS / GCP</span>
-              <span class="sc-pct">75%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-            <p class="sc-desc">EC2, Lambda, S3, GKE, Cloud Run</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">⚡</span>
-              <span class="sc-name">CI/CD</span>
-              <span class="sc-pct">82%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
-            <p class="sc-desc">GitHub Actions, GitLab CI, ArgoCD</p>
-          </div>
-          <div class="skill-card reveal">
-            <div class="sc-header">
-              <span class="sc-icon">🏗️</span>
-              <span class="sc-name">Terraform / IaC</span>
-              <span class="sc-pct">68%</span>
-            </div>
-            <div class="skill-bar"><div class="skill-fill" data-width="68"></div></div>
-            <p class="sc-desc">Infra as code, modules, state management</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tools Orbit -->
-    <div class="tools-section reveal">
-      <h3 class="tools-title">Écosystème & Outils</h3>
-      <div class="tools-grid">
-        <span class="tool-chip">Git</span>
-        <span class="tool-chip">VS Code</span>
-        <span class="tool-chip">Figma</span>
-        <span class="tool-chip">Postman</span>
-        <span class="tool-chip">Jira</span>
-        <span class="tool-chip">Linux</span>
-        <span class="tool-chip">Nginx</span>
-        <span class="tool-chip">Redis</span>
-        <span class="tool-chip">GraphQL</span>
-        <span class="tool-chip">Prisma</span>
-        <span class="tool-chip">Vercel</span>
-        <span class="tool-chip">Terraform</span>
-        <span class="tool-chip">Jest</span>
-        <span class="tool-chip">Cypress</span>
-        <span class="tool-chip">Storybook</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PROJETS
-     ═══════════════════════════════════════ -->
-<section class="section" id="projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-number">03</span>
-      <h2 class="section-title">Projets</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <!-- Filter Tabs -->
-    <div class="project-filters reveal">
-      <button class="pf-btn active" data-filter="all">Tous</button>
-      <button class="pf-btn" data-filter="web">Web App</button>
-      <button class="pf-btn" data-filter="mobile">Mobile</button>
-      <button class="pf-btn" data-filter="api">API / Backend</button>
-    </div>
-
-    <div class="projects-grid" id="projectsGrid">
-      <!-- Project Card 1 -->
-      <article class="project-card reveal" data-category="web" data-tilt>
-        <div class="pc-image">
-          <div class="pc-img-placeholder">
-            <span class="pc-emoji">🛒</span>
-          </div>
-          <div class="pc-overlay">
-            <a href="#" class="pc-link" target="_blank">🔗 Voir le projet</a>
-            <a href="#" class="pc-link" target="_blank">🐙 GitHub</a>
-          </div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-tags">
-            <span class="pc-tag">Next.js</span>
-            <span class="pc-tag">Node.js</span>
-            <span class="pc-tag">PostgreSQL</span>
-          </div>
-          <h3 class="pc-title">E-Commerce Platform</h3>
-          <p class="pc-desc">
-            Plateforme e-commerce complète avec paiement Stripe, dashboard admin,
-            gestion des stocks en temps réel et analytics avancées.
-          </p>
-          <div class="pc-footer">
-            <span class="pc-stat">⭐ 4.9/5</span>
-            <span class="pc-stat">👥 10K+ users</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project Card 2 -->
-      <article class="project-card reveal" data-category="api" data-tilt>
-        <div class="pc-image">
-          <div class="pc-img-placeholder" style="background: linear-gradient(135deg, #7b5ea7, #4f9eff);">
-            <span class="pc-emoji">🤖</span>
-          </div>
-          <div class="pc-overlay">
-            <a href="#" class="pc-link" target="_blank">🔗 Voir le projet</a>
-            <a href="#" class="pc-link" target="_blank">🐙 GitHub</a>
-          </div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-tags">
-            <span class="pc-tag">Python</span>
-            <span class="pc-tag">FastAPI</span>
-            <span class="pc-tag">OpenAI</span>
-          </div>
-          <h3 class="pc-title">AI Assistant API</h3>
-          <p class="pc-desc">
-            API intelligente intégrant GPT-4, mémoire contextuelle longue durée,
-            RAG sur documents PDF et fine-tuning personnalisé.
-          </p>
-          <div class="pc-footer">
-            <span class="pc-stat">⚡ 99.9% uptime</span>
-            <span class="pc-stat">🔥 50K req/day</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project Card 3 -->
-      <article class="project-card reveal" data-category="mobile" data-tilt>
-        <div class="pc-image">
-        
+  <div class="hero-inner">
+    <!-- Photo -->
+    <div class="hero-photo-col">
+      <div class="photo-frame">
+        <div class="photo-ring ring-a"></div>
+        <div class="photo-ring ring-b"></div>
+        <div class="photo-wrap">
+          <!--
+            REMPLACER src PAR VOTRE PHOTO BASE64 :
+            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAGQAZADASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAABQYDBAcCAQAI/8QASBAAAgECBAQDBgMGBQIEBQUBAQIDBBEABRIhBjFBURMiYQcUMnGBkSNCoRVSYrHB0SQzcuHwgvEWQ5KiJTRTY8IIF3Oy0qP/xAAbAQACAwEBAQAAAAAAAAAAAAADBAIFBgEAB//EADURAAICAQQBAwMBCAAGAwAAAAECAAMRBBIhMUEFEyIyUWFxBhQjgZGhscEkM0JS4fA00fH/2gAMAwEAAhEDEQA/AGLI6VpI3WpBmhiHhzgEPDW3HkaxGoi1hq625G2LCQtN7vRvStTQADwnZrCEjkot8DfTliaR6NZhHNNV++KLRSpddRH5XI2sTsAOhNrYrzyNmlLOky5gLVAQ+DHvHKBqMik7lN7WBPPnim5EZzO6zI8simkSFzKzMZJIo76rfm8twpHUE/fA51lo5JzRTCRIj+FToTElRLpuBLbcC2kgAWO4xYahglpl93hkEcBvGstw4F91PyN8RUOYS5tm1SJ1miMK2ljVbLLGF389/L5jfax7HCCa5Tc1Fox/uKrqAXNb8TyrpMzno6mvFNQNVzREr4PmAIXZDcWYDcWNrnniKnp6BOBJj+z4qaKLxklhlS6+ICeZO5Goi1+XLF/iQQ5dQRyZZBDUSalBGoqEkO402PmI7XtzxSoqOPPqus4dlq2OX5aqNUOmzSzMt23PZgTiOtsVRtUdSGqG1PjEvMaHMuDMrniAjqZqiBINNTRqp8VrkeAw3YJctvyX6YX6rO6/LKKGorloDVTQxF1qgwlZmJHiKpABF1INiVtbGlUWaUz8VUI1SvlopZKGm8Jbliqi7W5m5vuOfywdzLh3L6+ljq86WCuYwLCfIqBYx8Kx3NlG5uLk32vyAb07pdVuk6jvXcYo8J+0yggyuoNZV1cZRV8CBKZVRyQA2hVBJINzdm3H2xT9pPFFHW/s/wATJYWC+c5gJfK7mPyoChuVN91a1rbdcGOJvZxlAjqMzy6krg6uJDR0UwjVxsCFDbLtc7fPpbCHXcO1+XUcNZmfuEULSskmX09UJqhRZiXJ2vawBP8AfBdNZW6bq4Sm0ZDr4jBw7mX7ZkialoGhOXwiVLS6TE4sBpA2IB//ALYfa3OsoraNJaRJIqijaGdI2jsRZvOq32LG5va+Mp4PFTRyM0GWRZhPJTAAvB4xVLXDrbkd+e+DlNlXEfElQfDlp0h1iaQGtSLS1tPiEAE8ugHXpgj2Iv1mO6nXWahg9p6jTn/tBm4cz26PQZjl7p+JFGGWVfNbcgkEjfte+GaqkizPLUr8pmgqqaoW8U17qwP/ADljPP8A9vanOpEqKrNVhmiYAyUTFxNb8xVgAG6XsQfnuXXhvh2m4ToZaaCpmjp55NZ95luC9t9C28t+wHTlih1zUWENWflKTVWVk/E5MAZJPWQcV5/JmVORC5jhgqoyoi2UnQy3vqJJP3x3RZU+e5ZUSCoelzAye+xMFveQHyagfynAnijOKCp4rgy/K6WqWdtb5gXvEQ0a3icKdm2J36g97YKcBZjNV5O2Y5rUyUqtMwBsrQxgWUEjmCehNwO3XCmqqY2rd10T+s8QVAsPca3tWRQZpUUzZZXCFfHlRxY7bq5+F1+f0IxHDV0zpTx0mqZSrCJoWsigkbajsN9sB+J6HM6ypoqCnhU5dUTxe/Zg0odhHqF0RL7X6nlb64uNHUwNHNlUktaKVTC8MuqFZU3toa2kHly2a3yOLLTLdd8y+B9hJU77e24l/Wk0gpkq6alqY9TAR7yL3QAizlhvb5d8c0lZHHUOKn/FMXdYkMYBKkdRY2XY7k8xjwxVLLTO1NDJULqJjmX/ACgf3SdzYXFtvX0gpxERKKINLUQ8ujyKPit02vYDFwg2jBjwTEvP49KY4oiVqwn4XjPdJxfmH6Gxx7RZmryTCpy5qCYC8rMttQH5wAeXrb54qU+Y5bNCtHOGYrdRGqfiRnsNJ2xIMqmleObKcyOmFxqiqozIG35NfzC3T/vjueZPHEp1RDeIQdQG97WuL88TUIZGcPpu3S+97Y4qI2Zjrm1Bn5Ejc36dsS0CNMWci+lhp6b2t/I4JnMGII4ruKqljO9oif8A3YHxXcNYgdDtfBDipT+00HVYlsL8vMcDqXyvIDyw/T9Ait3LSEfC57Y7XygHn1x7pADcrE47sBb9cMCAhOhmWSNQIwpFxiZ13xWoQABbucXCOe2Oz2ZEnxEYmfaTVfnf++Il2fURyPLEko8qtjuZCcSyXXTe24N8QCYKzSIo1KwU2G9vXHrnzj5745Fo1bewBuMexJqRzmEYnZVKk7b29MdPK2gKSDyxUSVrLbS1wDa/63x7I138ykHncDY/I4liczJnbUT98K2WSVGUZpm7U7uErKx5xESNNlWIE972LfbDK76IpJCRsv2wixZzG/GMVIXBh9+GV7n/AMyWkdj/AO8qPpiLdYk6xzNMWsRUViQAN7gbY88e6dbEX5YoTQmfLtACv4iW8xIF+x7YihYyQCTUGcpbdj8QAB0nlbABzkQ/t/HcJdkqVQxoyEhlJDA9R0tjyaMJHtz/AHevfFKSrJroYl0A6N3drgqeg6et8diaNIkfxyUS63O+o7YAvyOIxZVtVTjBMnMoItqF7kH6Y+G9gRa2PHsdbAcmsR649CltItf0BwzUSMxO3ufJr773/TEovc26dceRgEg45UFmV7EEAra/r/t+uCHmQk6AgEg746DaI+lt7A9e+POQJ7AY5kGoItlKm/XcH/tiBQAZEkrc4MhqhMabyALLewJN7Dv87Y7BKgDa9t7DrjwkBQw9f548L7X5nEcc5kiwxiRVVBSgRk0cUgVlCtAfMrX56gbqe5tfEMcNbJU1NLUMkngWAEWhABbzBivmLG6nYWsO+Jve2pJBLLVU0HvG+olQy2FrBdwzX2uOpG3XFyjl9yYVipJPSVCCRpp4wskbDazbg2G+3S5tbljPWWsoyFzHWJAyIGgRaN4ooMvjWeSLSUQg3B5MsguSCBe2w233xJnEdVT0xqaQNDVr+GTbY25MD15/XF6szuipmgqqFo2qJgwgMN7yKouVG2217fe2PMtlbOqOorC+pQLxRkEMVU2IPS1uVvXCWqAup90DBEBrNDa+n/eQpAHmLs0klTNkFNVvJUVcaPUSxh9i2qy6eg3tsT1xXqeJGloKpaPLKnLnzNwJpKlgJAF2NgOmna+3y64t11BUwzu1NNNFKwAgeNgGQ3G4J62uMDMjy4V2cJSVMb2iZmqGka7Epu5ZhzBbl6EYrv3jdp2Y/WTj/wAwK6hW0xJX5HAhvIeHxBU0eYzholhIWNRt4f8AFt8+WGGPLPEq5YmdcwpnUsFniXSX7Kelvl1x9DRSrQSkymokMjSpETuwPNV+XriJsukAWaknEciWuIZfMl9wCO3UbWw9onbTVAFSR95JLTXWOMy7UJCshWAkoVUWJOpW6jffGO+1iig/atLVwUS0czQyCeUOAKvzBbBed7G5735Y1KkqlKr77G0c6EhJFt4e5vcgciT8+eB3FvCQ4u9xWKpjpnp5hLrMes2uLgD1FxgNdy06neh+LdxdLQLcp0Yr+znJ1q6avaSBUEX4FLKJ2V4rpvdeTC5536csO2T5FHlUQj8CFV0hWlIBdvrzxFmOYZLwVQQ0c1T4D2BjhRRJO/8AFo+25wNo85z3itmfIljoKONvDaqrdMkjMN7Kg5cx/fANW9mqYEjAEje72HA4EYI6qmiE7RwvTRx86mZQit/pv/M2wsZ3wpnNfxFBmuXZm6RqFdRUyFih6qtuSkdNjud8SZJw7WVuYyZxm2ZtmXu8jeBG8RVGZdr6OQ35ffDPnGa02SZVV5xmEiR09OuosTbW35VHqx2wJg9ZC19mBCe2fjMp4wyvKuDc9yvN6+rNTmclWlS1NCmiCOBWAY2JJt235g4ZaDIoWr81iZYHSJ1kcS04mWVNzsOdyCLEH+eMygp8645bOuLa2RL0cd2h+ZskS9gB/Lucaz7MqoZpkUNdKFFTJEtO4Dhr+H5VY9QSALg4b1SMoVickdw1rEYPZktLULlZrVhompIaFxDOkcuqFkYBlcgm6Eg8wTvceuLVHmdLV5gSkNQ7CO6K5NnQW5AGxI+Rwr8ScPVuT5jLVQUUdflkza2p3QusdtypANwN7gjliXKs24brIURTVZFMDdGgkZoV9dJvYd+XzwuKHz7mnfBPgyYCnlDgxyi12WWOqkjMlyqyWWRX/wBR9Nv++O5I6mSrYIjlYwHWONvDIb0vsfketsDI1zWihaNooc0hv+G6yG8ykE+XmenI8sWsppYZ4P8AFymolZjqkhvCB2Gi5KsPnvviy0vqBb4agbW/zHK7Gx/E/wD2EqWSprHuaiFCHDNaIxuNuvf/AJ88V6yvoaIK8BWZIm8KSNlOpGI7Dff1xODJRmJJZ6aVGOjU480q9CCeduRH67Y7jqZnqgPKIonBDQtuincG3Mjv07YtgIxmC5kRo3+K4N7W5b7E4tZfAwhCkaWLldxv6HFKoq0kqJqWEF3j80sgPlUk3C/Pe9unXBegvpAbfW9xbqO+PJYrZ2+JAEHqLXEy/wDxdwSD+CpFv9RwLWwJt1wW4isc3mJN9MSAevM4GaQdIt1xa0/QInb9U4KFk/6tsSCO6Xtzx0oBSLuW3x6pPhj5E4ODxAy/QxlEX+Ik4tkm2KlG5MSL2vi5fYY7OyMoS1zsL4laMeGQceKLm2JdN0senPHpAiUmiAN+xxFoJEha3O2w6fXF2QKqkt1I/tiGZfDjcltJDf05YnPYkElTQ0Nnq6ujpIwdAkqJViX5XJGJnbSsb+8RSwuPJLGwZGHow2P3xh/tAyytz7jLMJq6QyQx+GKRW+FYSgZSB63J9d8T+z6uzLhvPYsrhfVlkys8sLyaY4rC5l7KBbcnbEA5BhCinqarxJxBT8O5RVZjVLqjgj1InWV+SJ9Wt9L4yCuo6+i4S/aKuP2lHmNLmcj/AP3mSRgfuVGDWbZgfaNxLT5fRM/7IpJSVa1vHbk0pHa1woPIG/XB7MMtSvOeUEaCx91Ea9isTED9LY99XM7kLxiOuT5vHn2VQ5rQK0kVdEs6Rmw8Jr2dT/pYMD8h3xXznMcv4XyaTMc1nioqaM6FsDIXJ5Iqg7k77fM7DGT8HcXngTMJKCvSSXJqmVXYxrqemk2BdR1BHxL1tcbjdl9pdIufvlk6y+NlkSvKtTES0F26lhsDbvYjfA9sKHwMY7hLhn2tcMcWZlBkohzCkq5pAtO1bGgilbeygqTpY9L7HlfDmYlClV0pZjcEX3vvjD6rgyTK62krZ4jS0tLLHUvUn4dKkMAp6sSAAPXtc42rLamSrAqJQUll/FkXoGaxxHaBO7iRx4loLZGsD3x9cqRp5jkMdflYHUCOdxzxwTqXVy7HE0gjJBIuuMBhZibH132+wx6AdQA2JJF+2OZjdlZVUkD4TzG2Og13S1+V/riYPc8ygYk/ME23B2xx4WgAhgxP6Y7a4FsRE7ADnzx5QZAmeHl9cRMdN2xJzuBiNxYDriA4ad8Tqmoq2ICseqkiqpCG8CNVYDfdbsCALWAt698S0tM9HLKkNJFHLOTK8MO66uZL7XYX2uBgjQVtS6aqlKd1kOpFgBUqnUnVff5d8U834iiy6H3o0kuiGxkYAO0YP5rDmB1scYw6vU1n5KIY32IfliLXE+XzT2rac1dIkSPI6LIpLlVPmAbc3JJO+6jbfHfDvE0eU01Hl1bRTU+ZPbZmBimD7go/LSbiw6dcG34q98zFEoMwympjiSMy0zNZ5dQ2C3622t0J3wKrabLs2yUUr5e71cErR0gp5/8AL5HSzcrDly6Dlieo1J2fMYjOp9RusoFLNhR48S/PVUFVN4NJOjTIxMcTHS91O6AHe4/X74G8IUhFPmFeEMtRPO0dr76V8zfcn7Y8r80yrgiiirM0d56liDHC0mqQv+8b72BNr4CcCz5hnHv00uYRUFAkxkWNyUjdm5lRdbrtbmfniqoqDN7mPiP7yopQEEnqO1LXR5pCBIvulSRdogxYehDWAI/5vjyhyqlyvMFqlRmk1tILkP8AiMAL3O/QWAO3TAmpkQ1C06VOVZmzsqGOnWRGANwPMbrbbri/SNl+VKvuMbSa1LCOFNRjANjcbadwftgx1BrPuVAqP7SRd1O5RgTqjp8yk95XNMshpqaMsI50mvJKT/Dyt67fLrgPxFn2a5pmUfDeTZjT5W6Kgqp0dVljU8kQn8xG56jF6hymYVRzSKrncTMSwEV9QPQA3tv22wAqvZlSZjnYkaoqFhmnWWZWOt7g3vdtwT3+WJV6hXsLMcfp5nFtVmyeMwJlWS0OZZpXpTUzy6XaAlp2lllYEXdnblb6b2tyOHzLocnjy2pyHLKqohjoW0T1Ufxo1w5Os7E8t+Q5YWOD4X/aGdUVU9NX0lHmUst/DUuspNzduewHK/M87YrZjn8WbmkyimUw0EsglrfB3edmOpr+gBAt6YkCFYknOJIgrkA8TTIJ4KfLdc1UDRwR6jUysLsnPUSLbn+uMS444hqeK6+qkkqpkymAlqenY6VVQPiK8ixt69sN3FPFi10U2QUMSnLo3VFuDqJXsOg6YzLitpZHNOAI6eLSzR9Wc8r/AC7YFp8m089zoXccx09kNFJmOWcUUMkLrDUpHpc8tdm8vzF1xT4MzSThfiJbxXgqnWmqRyKi9g/yU8x2v2wP9lb1uWZvHn4pJmoGqf2dW1AcFIxKFCFhzFn0+blvg/xlQTcP8UtWRR+FHI4qIb7qdwWHyve4wzq1KWZ8GT1Cc8TSc9jlSJa2HMf2c9Nql8d4/EjC23EidV+W4tfCRmud5VnzmGpoaKSs5wz5dISHNtywbTZCOu/LD5lrRV1D4awFI7NH4bPqKHkync/Tc7EYTaPLarI2bIc8UyZTMwaimaMSRIxYfhMTuobYW6E7c8CoYKDRYITTkL8HEFRUOaZLLRVBzCKLQoZbn8Bidz5VtsexseeHnK8ziqfwc1of2ZmLwlm1MEWZR+dXPT/l8Dn4Tmjp/d4ZamDx2Znp1dXhjNrKt2BI62P0uL4GTmmgjOU57Tw1Bt4bSVpLSwJYDyjmY/8ATyvuOWOhDu2s3H6Rv2x2DxGuuoapqJstY+8SS7R1MqMUsRfzhSLm3qL9cDa2sg4by+MUVosyCNS08bjU8hJsCSd7LzPTa2OIeKZ6GvNDT5hR1lLEoDCQ6zta5DDcAdybHFenyx834kkzSZoo6hSqrqVjGhtvt9drYMPUHx7IHy6nLHbbhRzL+VZUmX5WI3k8VmOt3O7Mx3Y37k4NZZexUKLADfFdyVNmJUnfS2+n/bE9ENDqbFVvbl9hi301IprCCTrQKMRc4iIOd1AHRIwTikqlorqOZv8ALFnPnvm9UPSPf6YVeLuN6XhHLQt1mzCdSYID9tTdlH6/fF1SMqBFLPqMNV2YUWUUy1FfVQUkC3IaZwoPoOp+mFSq9reRwlUpKWurNItqVQin5at/0xk+YZjWZxVmsrZpKmdzcux2Hoo6D0HbBvhHL0rMwj8WFGjvvrW4++HFqCjJi5z4mkZR7XMtkMcNXleY0qHbxQBIP6HDZScYcP1bBUzWnikYXCTnwz+u2FyalhpMvpJGhJWeRkQMpZI0Xa1u53wtcYUlJTtp93RY3F10KeVulxjilH6k2RlIBmxqmwYfCeRHI/XEqny4/NmW8SZ1w418pzWpp4wb+7k3jP8A0Hy41zgL2m0nFv8A8Pq0SjzQC6xr/l1AHVL7g91P0JxHbOFT3HNbOTflipVxlldgLlb2+dsWkOpvvjiS/a2/PHhIiYfQcYZ/w7TjL5sty7OKZCViStiYtEpJOjWpBKgk2U3tfa2KVTU5xxF+DNDR5fQMdTUtDD4aSHpq5s9ugJI7DGrZrwPS1s3jQSeAXOp1KalJ9OoxcyfhKiytlkP48oN1ZlsEPcD++BhDmF9wAdQVwdwoMjy/xpY7VEqgW56F9fU4myqNV4mzJWAI10p//wCb4aWG7XN16emAOWRA8UZiTbb3Y/8AsfE24EGOW5i1x1wONclXTxFqeUktYf5bHv6fywi0OWZjk8rPQ1dZTA8zBMyau1xexH0x+iHS5IIuCLG/XAKr4Ryup87RGJy2/hHSPtywLG5YUHaZlWVZXm3EmaUSZpW1Vd4cgBMzlja9yewFu2NlhiWF2aO4ub6eh7fyxDl2SUWVAmli0udi5N2I7YvWB6cuWJrWAOZ5rTyBI7MfTHhvYA3PfflibT3xyy/UHviePtBT7UWjuAoPIm25x9fzpb4uWOip0jbHpUAr1xySkjD8PY2PftiJb6V1fO+JJL32G2I9QunYDfHsyM9IuL8rYibT4gUbki+Jh/lkHlfHipYl9t9t+2BPkYxCIB5lvNM4XLoyJaTM5ZN9CQQBlJ+Y2H1wDoOKmnrZaWbh7M4qq4sqKrAr/Ex0gfrgnkvtEyjiL3iTKo66eOBlR5Wg8NWJ9Sb2HM44dZ6qaTMK6rSOGMai7NoRF9STYD1x87tdkswB/KKakr4MGvwnlVfV1M/7JMVTMCPF2CxdmQcgfX0xNItHwnlUdJSLVSCUuJK2MKRASL+IxO1gbC3PCX7RuOYq6GPKMjqVmgvqqKmNrhz0Qd+5OFrhbLKXOM7o6LO8yWCDdkgY7yEbhf4VPU4ZRCxDW84gVznmFuMcjObRUlb46QSSqWXRGR42/wDnaCSI77AAXva+Gv2Y1dNnfD0nDebQwzyZa2mJZPN5CSVIvysbi/ywLgSpzfOVMy65pZFTQo8qre23ZQP5YEZLxg+QcRySQxxVFDWVDeIEG7R6mAKMOxGw5YitrXhscAdRr3CwIMd6rhzM6aWpOSy0atKgQmsBZ4luT5bCxsTe5uRirw97PmoZC9bxPXeM9y6RgkOTzBZiQftg1nvEsK8PtmESz000gVYZHGnQ+q256AWuQefLFROI8yqRVyUkOX5xR0vOoivG0wHMIu9yB9PngC2O6cdSLFwBnqScRCDMq6DK5v2o1OgDsYlIgjA6Oykb8rDE2ZVS8N5DUZzAXtTxbRO7SCUg2FixuN/U9cdzZx4yU0tJPmHgva6wUjlF/wBTWtYdbAnAP2g8JZ9xdDSwZdNR+5xxk2eYrrkOwJAG/p8zj1aqXCngSBbJGBKTJl+RcLeFlcpihmV6mapdrvJqN3kY+pawHL7YKcCHKq2KZstpSaCLw4KeraM66yTnIwJ3Kjyj5k9sZvmK1uaHLuDcv94IiVYp3lAEjMvxA22CqQx+Vr40fM6B+FOHJKGlqSsfuzJD4TEeGx3One4J322G+HsIoZrDkmO117gWMR+JJFWvqo4jpleeT4PyrqO5OFHiEk1cVNC6hYiGluebW5fQfzODs1QuT0RlddcsqlYw3K9+Z9N7nAXI8vnzjNUpo5LO7iXxTEHYgG7MFPM9bGwPcY5oKtzF/EJTVn5GMHsyzGDKOJnyyth8eizmI0kkQIALn4Dv1vtfpcY1vivho53k5pLtJUwDXASwYvtbSSO4/XGacf8ADFXl+bwZpDYJVyLIs607QKJxYnysTYkjVYG172xqvDKS10MWYvmTVJr4/HjGkKsW51JfYbG427XwzZT7ylfIkgu5SDFHLuIf2Xk1PBHQVNHVQyCOaseNjBcmxZ2Hwtstxbkow6zTSZlkk0NYIlWaJlLo+uKSw3ZWHMdRilJPT5jmmYUFPNGiKiu7sptIx+NWW4uNlxUzrIqbLY0qMmnpssqGZLU7OTT1fUbdO+rmOuItQWG62dBHmCc+4zh4Cly1aid6rx4ld6WcHXGLW1axtpuCLG5wqtSZ5x1n4r2Mc8cystLFVMIA8N9xGBckC/MXA5k9MaHW8P02e5jT1lbDFPU0qlIxLErrGCQSAORsRs3PAjjHiSZKpOF+Gqin/bE0ba5Ad4IyLHQw+FrX+Q+mA+6pIWsZx3F2bDcHiKYympoqGTI6OtjrGeq8AzRTq8wFrPGdPJC1ue+x5YeOHoEymoqoBU1U9VTzJFIzofDUhFZdFtrFTvtfa9zvha9m2RUOTZ/mdPTS1FRLHHFHLJKNmcE6ivWxPffbDi9ItHmH7YDSKsieFUrH+cKfI9urKTb1DemIravvlN3Y7/M8uoy+zPEuCQyNYPoI3uV1aR1HyxbiLNGpACANYkcmxSnKxANGwVNOq/MD1t1HcdMT0U7NSsG0u4Gqycjy5emHqNUyWexdwfB+8arsYNseJvF2YQ5VUZpmNST7vTxq7257KLAepNhj891tbV8Q5vUVc/8AiKmqe6xD837qqPTlbGle3TPlgqI8nfxGhZnqZAnlLMAFS/cXv9sR+yvhiGipYc4qIVNdJupbfwweVvpjQrf7de4wlWm96zEHcJ+yXNs3tPm8Ry+P8iM13+o6Y1jIfZXS5dGoSo1jsVtv88X6dyNNsHaWtKKMIfvzs3yPEtDoK1HxHMG57wZUV9NClK6RywqVtqspGMh4z4dz3I3k8Yze6t+bcxjqbjcA+uN99/IGoi9+2B9dUxVYZJVDBtrEbYONZs6MAdF7n1Cfk2qLTMQLhwRsNyfp2xWhrqilqEqoJXiqIGWRJFbdGBuCDjZeOfZRl+aCWtyhVo6wKSsa7Ryt2PY+oxiVQssNQ8M6yQzo2l1YbqRzB9cO16kWD4xK3StUeep+neDOI4+K8ipM1QCJ5VKTRj8kqmzAenUehGDZUXYlQOnqbYyD2C5lqTN8sL3CNHUoOm/kb+S400ztLUPGstvNcggsrC3Q98H38CJrVljjxL0LJNGJFO1yMdPtcYpwvLHIpjSTw2c+U2Fvp2xZOoEliTvt8sdrYkcyN1SocqeDOHJKkA29cA8sqEbi3MIBbxvDpZdP8NnW/wB9sGJBz3IvgJRZfUx8eyZlt7oaBYW7lw91/rjr9QSnmN7LqNzzvyxHInIA2GIzUAnSDv3Bx9rNh1xFFIHMmzAniSMu2w3xyu7BTz7Y+aQheWIRUtHdgwFtxgkjLDLY2tiMkbA7HHzTmWzbb9sfKQxt19ccJncTsE8ueOlsd8fEDe3bHipc7c8CLYMJtyJ7KQpILC469McKqeQi5a3LHkrarj1x9FbSNXK222JA5kCJ1y8o5enTbHSoWXfryxwFKnp/THuore3S/wBsdIzxORL4MzXJMlpYcvlzahjghjEgRL/jsx3Ztrk77W6DcAYBcVzZx7QM1amp/eJMtjk/w9HChsemplHNjzueXphk4U9m+RZFI1bXVRrqinjM0lRL5Yv4gqczsTYnAzi/jiaspkynhWlkyjLrEStHZZZr9CRyH1ue+MBYAtmaz/ODtoBAYdRcznKJeDctKOirnNVeKmphZ5KdfzzMouR+6oO9zfpiPgPgapgoKviStEigkUcEUinW+o+ZzfcAWAH17YdeBMrXhPhOqz+WaGCqqSXMhS7LAhubm4texP29BhtzHPqLLqGlzGrUR+9PEW1DfSd9R+QIPpjt9zV1bE/6vMh7e04gyly1+HeF86zurIgaOhl0E7lRpO/zvYWxg/CdfLNC1GwXxYLT04ta63uw+9j9TjZ/blxB7nwfDk1JNFJU5qw1aWD6YAL3Nu5027i+MzanpzHQVNBQlXo1CyMsfhrUodjaM3KkX6sb+nIE0lAr0xDdmEICrzNrpaqLOMpp5cvFJULUrdI501JEwFzG4/S/1tiplz5JmcslLT09Hlmax7PToqob/wALAAkc+gPphe4SopqPPUpVllQ08jtPGTYFALAgfUbfLAHjeqqIuK67waqPMYVjSNGtYolw4QHup1D5G2ENKgUMnjOZy35YEcswqM+o81ipv8YKeKx8RJSCDfcn5duW+HGOKphiaup8xinjaMyaJadSCALk6hYg2GMho+K6zN8nahqMxlL00gAjc3Lxm9vMN7KRaxvzBwTyriSryujq8tnkkmpKiCSPQX3jLKQCp7XO4wQUoLBnzIpwcMJRofaNkGe1OYZ3TUuYU2azoscZIUxFdr2AsRqA31XvbFX9uSZlKI55ZZCXsATvudgMJGScP55lNNHImV1NZTxkRSzU8TSJtzAZR0v1w/8ADkeWTUeYIuXRz16RmopJFNmDLzUnkB8wbWwzqtKrP8DkeIcMFOIC4/yz9n5pDHI6iojhGoeJfTfppt687nlipwFDHUcVxOaR61KdCWVJzCdNgAVYdb/luL74hzermrs3nnqKunrJTNeSY1QqpAFHwqygKqG+wHbB32f5hFkfEkVLPHUR0malNSByvnNwj25MOYPa+2LRKhUgH2jhYIoM2ivyTK8yyb3OooapaaVSieZy0ZHJiDyYW2+o64gyPJo8n4fpcldqmZINX4h8i+Zy3IdLNbY4J0dcrQyxrIQ0djYtqA7AnoPnixTTKUCS7Ekn527/AFwzUiHDrJDB5EVOMIxDVxZvRwFJ6NbVOoWSSC1tm6kG23Pnj2imGbVsYqZ4JKVlBjJXeAAfCbevfFTj6eB6J4VzeipaWmBadGuZZLgaQiD4+fTvhFg4oEmTSZJw1T1TS1DiNq6pZUlqWK6iEW9lFupOwvhHXVPYSqjiAtUk8S/x97XUiV8j4ZPmdGWevIN1HK0fYnv26YTOAKPU9fJTo3vqUzIdI1GRXYaz87bH0OIZclTLxIniSvM6hqpJYwpik5lBYm4He++Gf2ThaTiqWnaRUNVRNJHER8RWQeYH5BvthMhVraqvjAixyDiH+CoUyLO6aKtWWObN45BArnTdk5KSeRa5t8vXD8tK1OJVfbxAZSNiI36rcff74Qfa7QNLT0FQCR4UhW4NrEi4I+3PBHgHjjMc9P7IzBEealVX8YPZpEGxYgjc8vuTgFddb1n/ALp5Au0g9xmkkEkS+GYyFOkgbMvrboPXFaWGSlZJqYL4d76T8MT8trc1N/oT64F8SZlNkGaUlWkBeCRGhmTlqs1xv3AJ/XByllVoqiUANEsfjXjsxcWvt0vhxFTW0hD9Q/8Acxuo+7Xg9z82+0aql4i9qlfSxuWRapadEttpUC9vqTjW8holo6eGn1KAgC4zuno8tqOJ6riVqucTvJJURxmmGh+drENsw2BBHPHOacYtRnXLPI8i8lU8vli8dSyKpPiWmiBXP3m3U6wJzkU/I4JRTQBbA79idxj8zR+1HOFqi9BmFdTP0QOJFPyVrjD9wrxfmeciGYK80jkq6RqbBhvcDpcHl0IOFrNNsGQY8l+44abCtRERa+2IpoVYeQg4zjPeLK7KC6z3oynxGSM3HyB5k4E5V7W6U1KrUyZnIlxqI8FfsLf1wOul3GZN3C9TRcxDRA3xi3tbyeJnjzmBQs6kRTAfnXofmD+nyxpw4xynOJFWCaYa/hWoUKfupIwl+1CnvkskgHIg/TBKFauwSGow9ZBEBew2Ux8W1Ma8pqJ9XoVZTvjbGXQbqbG92O2/3xh3sJdBxdVBz5jQSGME9Q63/TG1UtW9fTiTSaZyCCrMrGNr9wbH5Yv1IxgzNWI+Sw6lsDxGRrCw5gjniVbEX2P3xwpAAuVv3vjppI+kiWI/e3vgowIuSTxI5Njfp6Y8AvKp38uPU0M3+Yo/6hiSPRruzoD6kYlmDxme2B3IBPfHYOwttj1gqktqUg8rWx4HQ8mQj/UMczJT52vtfESouk3uQT1647aQcrJp331DnjhnARyBcA9GB/TEScQgUnqdLpRQqj/tjobuBewJtv1xXLeU+cf+oY61xkqGePYg/Fblge+TCY5MtpIGt5r7c+mPQ4VtWq+3MfPFF5oFhdBNHGGubK42OOkq4mplSeaHX1IIuDgTAxjClcg8SxJZ0JB2OoXF9++OotaqvlupHO+/2xDNXUvggLUR3A2tY2xPQ1S1lPri/ERCY2Ntw3rjq5xiBbHYnvwRgFbgDkMfBiDpFthfbp9MdO6orMw2Avz3xFA5dS5UoDuARYgdjviWTnE5s3LugmHPKTiHJ6ujgzD3bMXu0UarpeRAL6d9iW5bYh4a4bolpITWpBLUybzR+N+JAOYsov8AXUMX+JcpTMDQtNNLR1EEw8GTwrizG+mwG2w+QPU4Ts09ntNQZq9RTcV1tJVVxaN5JIhdtQ8yEqQSp5cjjGU6bDbnAwIdQVXGBF32l8UHi6slo6CIR5bDqChRvUP1kPp2H164e+J0bPeD8tz+F0NItNGsjavgY2Uj1OoEW7jAPLvZdmTO9O7UqRK1jUKSS49F5/Q4D+1jh3JuHsnocooZc0qczabx0jSqYxFiB5jFuAdri1rDmcSRBqjsboRNz7hPHECTU71s5mYWWMWRSOQxeoswbJuIsyoFiaGooZmZCBrGnmCAb8gQfri7kyxZnQ0sy+T3oLqA7k2I+hv9sDvaLlqQ8cV8sEbRQ1McbldXx2AU/S63wChwzPXZ4gLV6E03hWqkznL6DOKoO06B41qSwJnS5FmPW36AYt517O1zpnr6GeOGudbNCwGh7bAg8wcKns0KrQvl09UI2ZzUoJWCRKpshGonmSRt6HHuY+1pcumpI8up1lgoazXJP41veYlJBUEjbV058hgI07O/HX3k/AzA1Nwgz8VwU+YTmgiLaKhSLP8AIdPN3xoedcNcPQUwgCtTHUq6I9TlehYX5W5nod9r4K5pSZRxzksFfATrliWaCXTZwCL2YHt1H2ws0FdxNk+YPQVWTLnFHFYtPNKFeJDfk5+ICxNjvj2WDe2wnmGIp5bxDU8JZmzUxaqohIfEgRzGGPIOOx5Ycm4tpqjK4eJKbKKdqjw2mghmIhlksdJCSKPOd/hI36G+BPEHCdBnrrPwvV0+hwVnilm2iPRgRvp7/PbAPifxIMro8ozp6KtNCVmWKgqAjU6hSq6iyg6SCAd/kCcN6GlXb5HkQtKox5MVpEStzOuC0cdJ7yzaaaIh/wARmu3mHPft8sa9k3CEVflWTVWZLWLWZaFmgvKsyAD/AMu6/lDWbuDcG+Mt4LpXqMyoGEvgvTy+8F1l8Jl6CzhW3v6dcb3l144veKh21hirN4xmbURb6E7X6YutoOcyxIGMTmiKxZmIiwirZYTI0Nrq66reU9SLjb1wP4jzmDKKGSsgqYoquNi0cDoWFU67GOw3vy3B2Njj3iGpFHmmUTyVZpW8KrQTy/DqZV03HIKSo+mEP2iR1uZcQQUM0UNDVVCRywzNIXjlPJ1ut7DbtqfYcufqFCg44EiB9orZlLmvF+aVctEiCsLmc0viLDYMLMY1dr6QFUM5Nzy5Y0vIOG8ty/IDWVsyzvJDH71E8ISeGeLYEfu2vpt1sDc73JcJ5C9NRRVFXEoqIUBkkmhR3lIWwZNIBCAEqAL6lO42xep8roBDO89IgppZV02LhGXazyE3Ja97A7Cw5Xxx3LAqnc9xiJ+UcIR1KNXZg2tQWkEEURYuSbgWG9t+Qwa4hGU5Bm3DeYxmiihaRqF3SPSEV0Yrc8gNXTDCY3oBDHH4imTcvFIqEW5ADbUG7i9r4WPaLksuacL1EsYYSRlalo0iIDMvPWOSkKW32BxXVaH20Zn5JgRTwWPcN5xlFDxdkslOlRC7SSlaaYNdfETa4PI3J09ueEiqybNMpzChzPLo1NVlmXLK8YG9QqvplU25kK32we9jsgfhaWEyDTHVyeIpG5uqlACCNPI97+mGZqJ4aqSrWQU8UKSMTJsFUi53xFdMMIydTpqXAIg2YUPEmUeKoD0lUiujA3Kt/cHpgdwjUyUBqcnqtJnhtLCwNg8fX6Dni7wjBSSZVJ7nK7Uhqp2iVk02Vmvb5XJt88FKvJ6Oojbx4IJNuq+b788Re6tGDVdie3AfTMVOVCDN6mii0lY1qCD3LOCv3F8V6ilymqBhqYQ0p5FYgdP1w18UUgy7imaoQH8ZUdQf3bWt9wcCqnLVql94SJlqD+ZCAG+an+Yw+lnuKGB/M0WksDLkjuLVPwc8s/lzeghhvceNEUdfuLfW+NA9n3C2X0tbJGFetAYN4oW4uRa9sLklK+m0zEICAzsB5Bfc6Rz++Hfhfizh/Klkpss8VgCWdqhvOzWsWN+f02xP3GxzCvUufgIt+1Th+LPM1NLQSMsiR3CEkKTa1vQ8rYytuEajL60QV+WZhC48utGJQ+uym+Nj4nzbKs3rP2jl+YIatNMcsI3t2O32OB8fGeY0baZqOJU5bksD6hhsceFzL1PLplYYPcUcu4ZqKKO0Fe3gvuY5IyGQ9LH/AGGGTi+Okl4QphNJWGZwiOgjU6mI6G/K+CMckmenxPDkSO95Ne1x6Hrilxnaroo4kYII3Dqeg07jEarGJ5nNRSAuAYu+zjI4ct4knzBIA3hxvF7uZLsqsB5tVgL+mNC15dBE0UFLV0/iM0gfSNAa+9yCRv3ws5OkFDWTTyGopmmCapYlZkUgXEbKO/PDHFNDRUMDtVTVRqWLRyafIF6gEDfrseWBam8G3PulT/aUurSorsrfDfbwf1k1LBHWRM6mnLIfMkcmq2JZMu8LS5jdQBe1iAb4h0QVkCTeFqSRQ41puUJIDfLbFuOtkoYQI31xr+SXzgfK+4xZadtZgElXX79GVltN2ns2sOZTaAE3AFsdLShvMIwB+8OWPjP4tVcJpub6VGy+mOmVRUMwWRurb2AxdA8DMAqlupwtkOy3v2G2LEixl7sqnryxwrKLsY2c9++LbqunVosotaw3HpjhnQJWqRpsUEdtBJBNr9tsRzkaCVKFvKwCHcH1A/ri3MI9KhpNuZB22xGsNOshZUVFlYMSQF1HvgTHPUYqIGCRK0pChfDiV97b7Wxw8NmRWja5a5ddguJdTG2lRq1W0nqL9P547LkysjIyaCQNR+L5YHzDY+w6kcZ1r4bKC/K/X54siMSRoY0QBr3vzG2OYEUOWVjcjf0xLGLXW4G9xY7YkN2OYFiCeJBVQoYTcugXTISnPbfHtFUNlsolgvoYAMt/iGLkoV4SoGi9gWvbb7HA7xIqSU6mIV531FtwVANh/wBsRL7W56hq6TbX8exGPx45qMSws0oLKpuPNud8exjRAELEafKLg7et+uF+nrXh8KaJrQzMykXsSo/MB0se/phiIStp7owdG2Ktvf549kFsiSOUQK8xfIuMuJuHhDHBmNTPSILCnlkLrbsL329MahwtxvR8SQyy1VFRiqChZIjZJ
