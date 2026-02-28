@@ -51,12 +51,7 @@ revealEls.forEach(el => {
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   revealObserver.observe(el);
 });
-document.querySelectorAll('.revealed, .apropos-card.revealed, .skill-card.revealed').forEach(el => {
-  el.style.opacity = '1';
-  el.style.transform = 'none';
-});
 
-// Custom reveal class trigger
 const style = document.createElement('style');
 style.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
 document.head.appendChild(style);
